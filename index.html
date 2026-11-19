@@ -3,6 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Тема сайта. По умолчанию — тёмная (первая версия).
+       Светлая открывается по ссылке ?theme=light (и запоминается до закрытия вкладки),
+       вернуть тёмную — ?theme=dark. Чтобы сделать светлую основной — поменяйте DEFAULT на 'light'. -->
+  <script>
+    (function () {
+      var DEFAULT = 'dark';
+      var t = new URLSearchParams(location.search).get('theme');
+      try {
+        if (t === 'light' || t === 'dark') sessionStorage.setItem('akiotoo-theme', t);
+        else t = sessionStorage.getItem('akiotoo-theme');
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t === 'light' || t === 'dark' ? t : DEFAULT);
+    })();
+  </script>
   <title>AKIOTOO — тату студия в Костанае</title>
   <meta name="description" content="AKIOTOO — тату студия в Костанае. Индивидуальные эскизы в любом стиле, стерильность и безопасность, бесплатная консультация. Опыт более 5 лет, 3500+ работ.">
   <meta name="theme-color" content="#0a0a0a">

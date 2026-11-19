@@ -442,6 +442,14 @@ body.lb-open { overflow: hidden; }
       linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 22%),
       linear-gradient(0deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 30%);
   }
+  /* тёмная тема: низ hero плавно уходит в фон страницы */
+  :root[data-theme='dark'] .hero__shade {
+    background:
+      linear-gradient(90deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 40%),
+      linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 22%),
+      linear-gradient(0deg, var(--paper) 0%, rgba(10,10,10,0) 26%);
+  }
+  :root[data-theme='dark'] .work__num { color: var(--text); mix-blend-mode: difference; }
   .hero__brand { top: 17vh; left: auto; right: 4.5vw; width: min(52vw, 980px); }
   .hero__sub { margin-top: 1.2vw; }
   .hero__studio { font-size: clamp(16px, 1.35vw, 24px); letter-spacing: .32em; }
