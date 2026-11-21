@@ -44,6 +44,6 @@ window.AKIOTOO_CONFIG = {
     { src: 'assets/works/work-11.webp', alt: 'Работа AKIOTOO 11' },
     { src: 'assets/works/work-12.webp', alt: 'Работа AKIOTOO 12' }
   ],
-  homeWorksMobile: 3, // сколько карточек на главной в мобильной версии (по макету — 3)
-  homeWorksDesktop: 8 // сколько карточек в горизонтальной ленте на компьютере
+  homeWorks: 6, // сколько работ на главной (планшет и ПК — сетка 3×2)
+  homeWorksMobile: 3 // сколько из них видно на телефоне (по макету — 3)
 };

@@ -1,25 +1,25 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <!-- Тема сайта. По умолчанию — тёмная (первая версия).
-       Светлая открывается по ссылке ?theme=light (и запоминается до закрытия вкладки),
-       вернуть тёмную — ?theme=dark. Чтобы сделать светлую основной — поменяйте DEFAULT на 'light'. -->
+  <!-- Тема: по умолчанию светлая. Тёмная — по ссылке ?theme=dark (запоминается до закрытия вкладки),
+       вернуть светлую — ?theme=light. Сменить тему по умолчанию — DEFAULT ниже (в обоих HTML). -->
   <script>
     (function () {
-      var DEFAULT = 'dark';
+      var DEFAULT = 'light';
       var t = new URLSearchParams(location.search).get('theme');
       try {
         if (t === 'light' || t === 'dark') sessionStorage.setItem('akiotoo-theme', t);
         else t = sessionStorage.getItem('akiotoo-theme');
       } catch (e) {}
       document.documentElement.setAttribute('data-theme', t === 'light' || t === 'dark' ? t : DEFAULT);
+      document.documentElement.classList.add('js');
     })();
   </script>
   <title>AKIOTOO — тату студия в Костанае</title>
-  <meta name="description" content="AKIOTOO — тату студия в Костанае. Индивидуальные эскизы в любом стиле, стерильность и безопасность, бесплатная консультация. Опыт более 5 лет, 3500+ работ.">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="AKIOTOO — тату студия в Костанае, ул. Толстого, 52. Индивидуальные эскизы в любом стиле, стерильность и безопасность, бесплатная консультация. Опыт более 5 лет, 3500+ работ.">
+  <meta name="theme-color" content="#0b0b0b">
   <meta property="og:type" content="website">
   <meta property="og:title" content="AKIOTOO — тату студия в Костанае">
   <meta property="og:description" content="Индивидуальные эскизы во всех стилях. Опыт более 5 лет, 3500+ работ. Консультация бесплатно.">
@@ -28,218 +28,194 @@
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="preload" as="image" imagesrcset="assets/img/hero-mobile-720.webp 720w, assets/img/hero-mobile-1080.webp 1080w" imagesizes="100vw" media="(max-width: 1023px)">
-  <link rel="preload" as="image" imagesrcset="assets/img/hero-1600.webp 1600w, assets/img/hero-2560.webp 2560w" imagesizes="100vw" media="(min-width: 1024px)">
+  <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/cormorant-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" type="image/avif" imagesrcset="assets/img/hero-m-800.avif 800w, assets/img/hero-m-1200.avif 1200w" imagesizes="100vw" media="(max-width: 1023px)" fetchpriority="high">
+  <link rel="preload" as="image" type="image/avif" imagesrcset="assets/img/hero-1600.avif 1600w, assets/img/hero-2000.avif 2000w" imagesizes="100vw" media="(min-width: 1024px)" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body class="page-home">
-  <!-- Иконки: используются через <use href="#i-..."> -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.6" cy="6.4" r="1.25" fill="currentColor"/></symbol>
-    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-tg" viewBox="0 0 24 24"><path d="M21.5 3 2.8 10.4c-.8.3-.8 1.4 0 1.7l4.7 1.7 1.8 5.6c.2.7 1 .9 1.5.4l2.7-2.5 4.7 3.5c.6.4 1.4.1 1.6-.6L22.7 4.2c.2-.8-.5-1.5-1.2-1.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m7.5 13.8 10-6.8-7.3 8.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
-    <symbol id="i-gem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></g></symbol>
-    <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></g></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></g></symbol>
-    <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></g></symbol>
-    <symbol id="i-arrow" viewBox="0 0 40 16"><path d="M1.5 8.6c8-.6 20.5-.9 35.2-.4M29.5 2.2c2.4 2.2 4.6 4 7.6 5.9-2.9 1.6-5.4 3.6-7.9 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-box" viewBox="0 0 200 60" preserveAspectRatio="none"><path d="M4 6.5C50 3.6 120 4.4 196.5 3.2c.9 16 .4 33 1 51.2-58 1.6-131 1.4-193.8 2.4C2.6 40 3.6 22 4 6.5Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></symbol>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-ig" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></g></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></g></symbol>
+    <symbol id="i-tg" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5 2.9 10.6c-.8.3-.8 1.4 0 1.7l4.6 1.6 1.8 5.6c.2.7 1 .9 1.5.4l2.6-2.5 4.7 3.5c.6.4 1.4.1 1.6-.6l3-15.1c.1-.8-.6-1.4-1.2-1.2Z"/><path d="m7.5 13.9 10-6.9-7.2 8.3"/></g></symbol>
+    <symbol id="i-gem" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></g></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></g></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></g></symbol>
+    <symbol id="i-arrow-hand" viewBox="0 0 40 16"><path d="M1.5 8.6c8-.6 20.5-.9 35.2-.4M29.5 2.2c2.4 2.2 4.6 4 7.6 5.9-2.9 1.6-5.4 3.6-7.9 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-box" viewBox="0 0 200 60" preserveAspectRatio="none"><path d="M4 6.5C50 3.6 120 4.4 196.5 3.2c.9 16 .4 33 1 51.2-58 1.6-131 1.4-193.8 2.4C2.6 40 3.6 22 4 6.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></symbol>
+    <symbol id="t-zapis" viewBox="30 249 2136 783"><path fill="currentColor" d="M100 988Q94 976 92 970Q82 950 77 935Q72 920 72 904L73 893Q74 882 79 874Q84 866 92 864Q103 862 114 870Q126 877 129 888Q133 898 137 916Q143 943 153 968Q159 981 173 981Q177 981 185 979Q221 964 234 934Q258 876 258 822Q258 801 253 773Q252 763 251 754Q250 744 249 734Q244 700 226 680Q208 660 174 651Q171 650 158 648Q145 645 136 638Q128 630 128 619Q126 591 173 581Q199 574 215 550Q253 515 253 448Q253 408 240 366Q234 343 213 330Q192 318 168 318Q134 318 111 347Q107 352 97 368Q80 396 73 401Q65 409 57 409Q45 409 38 402Q32 396 31 388Q30 384 30 376Q30 343 50 316Q69 289 100 273Q130 257 160 257Q195 257 233 276Q286 302 298 359Q305 390 305 422Q305 466 292 512Q280 558 240 600L220 609Q253 616 279 657Q305 698 305 739Q305 756 308 773Q310 791 310 798Q311 808 311 827Q311 884 295 932Q265 1027 181 1027Q167 1027 150 1024Q115 1020 100 988Z M592 990V859Q579 850 543 843Q507 836 475 834Q464 855 459 885L455 905Q454 912 449 936Q444 960 438 978Q432 995 426 1005Q388 1005 382 985Q393 969 407 891L440 708Q462 578 480 486Q499 394 520 332Q543 263 564 263Q585 263 596 271Q596 311 615 464Q635 614 635 669Q635 722 646 821Q656 922 656 982Q656 1016 623 1016Q607 1016 600 1010Q592 1004 592 990ZM591 798Q588 754 581 689Q558 463 558 412V404Q548 414 530 494Q513 575 498 667Q483 759 482 789Q524 801 571 801Q579 801 591 798Z M964 997 955 808 956 780 957 687Q957 542 956 469Q955 445 955 360L956 320Q956 309 952 306Q948 304 930 302Q910 300 901 300Q873 300 848 311Q842 325 841 369Q840 413 840 477Q839 492 841 608V689Q841 708 845 744Q849 786 849 808Q849 822 847 844L846 875L851 989Q851 1003 843 1010Q835 1017 821 1016Q793 1016 793 989Q796 884 796 778V731Q794 653 792 615Q790 585 788 529Q785 450 781 297Q781 280 788 272Q796 263 812 262Q916 260 969 260Q988 260 1000 272Q1013 284 1009 301Q1005 325 1005 356Q1005 379 1006 391Q1006 400 1006 413Q1007 426 1006 443Q1005 465 1005 498Q1003 570 1000 600Q1001 623 1002 674Q1004 724 1006 745Q1003 764 1003 784Q1003 807 1009 855Q1013 890 1014 910L1015 934Q1017 966 1017 981L1016 1003Q1017 1026 993 1026Q977 1026 972 1020Q966 1014 964 997Z M1164 984Q1167 933 1167 880Q1167 834 1165 740Q1164 697 1158 611Q1157 594 1155 562Q1153 529 1152 504Q1151 487 1151 453L1152 351Q1152 342 1150 326L1149 303Q1149 287 1158 278Q1166 269 1180 269Q1209 269 1213 296Q1217 326 1217 341Q1217 359 1214 377Q1209 414 1209 444L1210 474Q1214 566 1214 643V762Q1214 793 1216 855L1222 856L1234 817Q1264 716 1291 633Q1305 594 1321 512Q1328 476 1334 454L1384 274Q1391 261 1401 254Q1411 248 1421 249Q1433 252 1444 266Q1455 279 1454 292Q1453 327 1448 365Q1439 490 1438 522Q1434 656 1434 723Q1434 755 1439 824Q1444 892 1445 914L1449 964Q1450 985 1439 997Q1428 1009 1410 1009Q1399 1009 1391 1002Q1383 994 1382 981V972L1383 771V735Q1381 683 1379 575V534V468Q1378 467 1374 467Q1368 468 1356 512Q1345 557 1335 602Q1325 646 1322 658Q1313 701 1311 707Q1283 802 1266 866Q1249 929 1238 994Q1232 1026 1202 1026Q1187 1026 1175 1013Q1163 1000 1164 984Z M1646 984Q1631 963 1619 930Q1607 898 1601 863Q1589 804 1585 708Q1584 685 1584 629V566Q1585 539 1585 510Q1585 451 1592 417Q1589 402 1589 386Q1589 326 1634 289Q1679 252 1748 252Q1774 252 1796 266Q1818 280 1818 301Q1818 311 1810 317Q1802 323 1790 323Q1780 323 1768 320Q1757 317 1754 311H1741V309Q1704 309 1679 325Q1661 338 1651 368Q1647 379 1645 396Q1643 413 1643 427Q1642 435 1642 459L1644 494L1645 528Q1645 543 1641 563Q1636 588 1636 598V622Q1636 661 1639 729Q1640 786 1652 843Q1661 896 1686 933Q1710 971 1751 971Q1768 971 1793 953Q1820 935 1831 935Q1845 935 1860 950Q1860 987 1832 1007Q1806 1025 1770 1030Q1750 1032 1738 1032Q1710 1032 1686 1019Q1663 1006 1646 984Z M1948 971V938Q1948 867 1949 835Q1949 814 1950 794Q1950 773 1949 763Q1944 733 1944 689L1945 632Q1946 605 1944 551L1943 523V324Q1942 297 1948 282Q1953 266 1968 266Q1984 266 1990 278Q1996 291 1996 313L1995 344L1984 520L1985 586Q2020 585 2053 605Q2112 633 2139 684Q2166 736 2166 793Q2166 826 2159 861Q2152 896 2140 923Q2120 967 2082 990Q2045 1013 1994 1016Q1977 1017 1962 1003Q1948 989 1948 971ZM2054 946Q2084 915 2100 872Q2117 828 2117 782Q2117 730 2098 692Q2078 654 2030 631Q2014 623 2000 623Q1993 623 1984 626L2002 889L2007 966Q2034 966 2054 946Z"/></symbol>
+    <symbol id="t-city" viewBox="59 251 2971 784"><path fill="currentColor" d="M63 1007Q59 995 59 973Q59 930 63 867Q68 807 68 760Q68 707 71 601L73 443Q73 434 70 416L67 391V386Q67 363 74 352Q81 341 100 341Q126 341 157 356Q188 371 202 394Q231 442 231 514Q231 568 222 604Q213 641 191 672Q218 698 228 738Q237 779 237 840Q237 901 216 946Q192 997 146 1016Q118 1026 90 1026Q68 1026 63 1007ZM174 522Q174 393 133 387Q122 410 122 495V643Q174 642 174 522ZM184 866Q184 824 179 792Q175 767 168 750Q162 734 151 720Q139 705 123 702Q119 759 119 853Q119 859 117 891L115 925Q115 927 116 928V930V975Q148 968 166 937Q184 906 184 866Z  M688 964Q682 922 680 829L678 767Q678 741 662 716Q646 692 621 688Q628 896 628 996Q628 1024 608 1024Q600 1024 592 1020Q573 1011 576 991Q584 932 584 874Q584 832 581 786Q580 764 580 719Q579 705 579 675Q575 511 570 428Q567 378 555 300Q554 296 554 288Q554 257 580 252Q595 249 604 260Q614 272 615 290Q616 303 617 320Q618 338 618 348L619 381Q621 439 621 466V644Q630 623 643 579Q656 535 663 504Q666 488 670 465Q673 442 675 430Q682 366 693 327Q706 281 742 260Q757 251 767 251Q774 251 786 256Q802 263 802 286Q802 303 781 308Q741 315 729 361Q722 389 716 422Q709 466 704 479Q687 531 685 563Q682 590 676 610Q670 631 657 645Q682 649 700 680Q718 711 723 761Q727 796 736 913L738 935Q741 960 762 963Q778 968 785 976Q792 983 792 996Q792 1012 781 1022Q770 1033 753 1033Q727 1033 708 1013Q690 993 688 964Z M945 974Q916 913 909 841Q900 773 900 710Q900 698 901 690V672Q901 667 900 667V649L901 579Q902 547 909 477Q914 429 932 384Q939 364 950 354Q961 343 975 343Q1015 343 1047 358Q1079 372 1101 398Q1121 423 1135 460Q1149 496 1155 537Q1161 579 1161 626V634Q1161 665 1162 690L1163 747Q1163 1035 1029 1035Q1003 1035 981 1018Q959 1002 945 974ZM1081 939Q1100 888 1104 829Q1109 778 1109 741Q1109 696 1102 623Q1096 546 1096 508V490Q1094 452 1070 424Q1047 396 1013 396Q979 396 968 435Q958 466 958 515Q958 534 959 547V574L957 620Q955 641 955 666Q955 720 958 773Q962 848 978 919Q994 993 1025 993Q1043 993 1058 978Q1073 964 1081 939Z M1342 1009Q1275 966 1275 774V747V716V692Q1275 652 1276 620Q1277 589 1280 552Q1283 513 1289 488Q1295 464 1309 433Q1321 404 1338 388Q1356 372 1384 361Q1409 350 1446 350Q1461 350 1469 357Q1477 364 1477 375Q1477 385 1470 393Q1464 401 1455 402H1408Q1388 402 1373 427Q1358 452 1352 492Q1339 566 1339 612V617L1337 713Q1335 756 1335 810Q1335 848 1338 872Q1343 908 1355 932Q1367 959 1396 971Q1411 977 1429 977Q1440 977 1451 969Q1464 969 1472 974Q1481 980 1481 991Q1481 1030 1426 1030Q1404 1030 1380 1024Q1355 1017 1342 1009Z M1647 1000 1646 961Q1645 944 1645 923L1646 889Q1643 878 1631 670Q1619 462 1617 403Q1559 401 1543 391Q1532 383 1532 373Q1532 365 1542 358Q1553 352 1564 352Q1592 352 1632 356Q1670 361 1700 361H1708H1716Q1747 361 1747 385Q1747 397 1737 404Q1727 412 1714 412Q1705 412 1688 409L1668 405L1667 410L1666 415Q1666 504 1683 699Q1699 882 1699 983Q1699 995 1688 1004Q1678 1013 1665 1013Z M2019 992Q2019 962 2009 890L2005 869L1906 854Q1900 877 1889 947Q1883 996 1870 1012Q1863 1021 1850 1021Q1838 1021 1828 1014Q1818 1006 1818 995L1820 990L1821 986Q1887 729 1921 479Q1921 475 1922 466Q1923 456 1924 438Q1927 401 1930 379Q1934 357 1942 346H1976Q1990 346 2000 352Q2010 359 2010 371Q2010 447 2031 597Q2051 751 2051 813Q2051 819 2056 844Q2061 867 2061 874Q2061 881 2071 934Q2080 982 2080 996V997Q2080 1019 2064 1025Q2041 1025 2030 1018Q2019 1011 2019 992ZM1995 796Q1995 706 1979 566L1969 462Q1926 697 1910 817Q1925 827 1998 833Q1995 818 1995 796Z M2328 851 2329 794 2330 748V745V735Q2331 727 2331 716Q2331 714 2328 711Q2325 708 2325 706V705Q2320 707 2307 707Q2294 707 2275 703Q2269 702 2243 698V813Q2243 839 2246 895Q2249 950 2249 977Q2249 992 2241 1003Q2233 1014 2220 1014Q2201 1014 2193 977Q2185 939 2185 878L2187 797Q2188 763 2188 725V708V694Q2188 678 2187 673V668L2190 610Q2190 572 2187 497Q2184 422 2184 384Q2184 372 2192 363Q2200 354 2212 354Q2244 354 2244 414L2242 538Q2240 594 2240 663Q2255 668 2294 668H2331Q2333 662 2333 656Q2333 608 2327 514Q2320 426 2320 371Q2320 360 2328 352Q2337 345 2349 345Q2356 345 2369 350L2378 354Q2378 496 2388 733L2397 986Q2397 1000 2386 1008Q2376 1016 2362 1016Q2328 1016 2328 851Z M2689 992Q2689 962 2679 890L2675 869L2576 854Q2570 877 2559 947Q2553 996 2540 1012Q2533 1021 2520 1021Q2508 1021 2498 1014Q2488 1006 2488 995L2490 990L2491 986Q2557 729 2591 479Q2591 475 2592 466Q2593 456 2594 438Q2597 401 2600 379Q2604 357 2612 346H2646Q2660 346 2670 352Q2680 359 2680 371Q2680 447 2701 597Q2721 751 2721 813Q2721 819 2726 844Q2731 867 2731 874Q2731 881 2741 934Q2750 982 2750 996V997Q2750 1019 2734 1025Q2711 1025 2700 1018Q2689 1011 2689 992ZM2665 796Q2665 706 2649 566L2639 462Q2596 697 2580 817Q2595 827 2668 833Q2665 818 2665 796Z M2867 998V972V952Q2866 943 2866 931Q2866 910 2863 867L2861 803Q2861 754 2864 657Q2868 570 2868 511Q2868 497 2865 469Q2862 440 2862 427Q2862 356 2904 356Q2937 356 2980 369Q3024 382 3024 400Q3024 410 3016 418Q3007 427 2995 432Q2953 417 2919 412Q2920 427 2920 455Q2920 495 2919 527Q2916 575 2916 599L2919 615L2935 614Q2943 613 2955 613Q3003 613 3003 641Q3003 652 2994 660Q2985 667 2971 667Q2953 667 2943 665H2918Q2920 691 2920 741Q2920 791 2919 831Q2916 892 2916 922Q2916 978 2918 978L2951 977Q2968 976 2992 976Q3030 976 3030 1000Q3030 1014 3018 1022Q3005 1029 2987 1029H2902Q2889 1029 2878 1020Q2868 1011 2867 998Z"/></symbol>
   </svg>
+  <a class="skip" href="#main">К содержанию</a>
 
-  <a class="skip" href="#works">К работам</a>
-
-  <!-- ============ ШАПКА ============ -->
-  <header class="header" data-header>
-    <a class="header__logo" href="#top" aria-label="AKIOTOO — наверх">
-      <img src="assets/img/logo-600.webp" alt="AKIOTOO" width="600" height="154">
-    </a>
-    <nav class="header__nav" aria-label="Разделы">
-      <a href="#works">Работы</a>
-      <a href="#master">Мастер</a>
-      <a href="#contacts">Адрес</a>
-    </nav>
-    <div class="header__actions">
+  <header class="header">
+    <div class="header__inner container">
+      <a class="header__logo" href="#top" aria-label="AKIOTOO — на главную"><picture><source type="image/avif" srcset="assets/img/logo-300.avif"><img src="assets/img/logo-300.webp" width="300" height="77" alt="AKIOTOO"></picture></a>
+      <nav class="header__nav" aria-label="Разделы">
+        <a href="#works">Работы</a>
+        <a href="#master">Мастер</a>
+        <a href="#contacts">Адрес</a>
+      </nav>
+      <div class="header__actions">
       <ul class="socials" aria-label="Соцсети">
-        <li><a data-ig href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a></li>
-        <li><a data-wa href="#" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a></li>
-        <li><a data-tg href="#" aria-label="Telegram"><svg><use href="#i-tg"/></svg></a></li>
+        <li><a class="icon-btn" data-ig href="#" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a></li>
+        <li><a class="icon-btn" data-wa href="#" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a></li>
+        <li><a class="icon-btn" data-tg href="#" aria-label="Telegram"><svg aria-hidden="true"><use href="#i-tg"/></svg></a></li>
       </ul>
-      <a class="header__cta" data-wa href="#">Запись</a>
+        <a class="btn btn--sm header__cta" data-wa href="#">Записаться</a>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- ============ HERO ============
-         Слои параллакса: каждый .hero__layer двигается при скролле (data-speed)
-         и за мышью (data-depth внутри). Чтобы добавить слой (например, отдельно
-         руку на прозрачном фоне) — скопируйте блок слоя и поставьте свои значения.
-         Чем больше data-depth — тем «ближе» слой к зрителю. -->
+         Параллакс (только ПК): двигается слой .hero__media. Чтобы добавить слои
+         (например, руку на прозрачном фоне) — положите ещё один .hero__media с data-speed. -->
     <section class="hero" id="top">
-      <div class="hero__stage">
-        <div class="hero__layer hero__layer--texture" data-speed="0.55">
-          <div class="hero__layer-inner" data-depth="0.15"></div>
-        </div>
-        <div class="hero__layer hero__layer--banner" data-speed="0.25">
-          <div class="hero__layer-inner" data-depth="0.4">
-            <picture>
-              <source media="(max-width: 1023px)" srcset="assets/img/hero-mobile-720.webp 720w, assets/img/hero-mobile-1080.webp 1080w" sizes="100vw">
-              <img src="assets/img/hero-1600.webp" srcset="assets/img/hero-1600.webp 1600w, assets/img/hero-2560.webp 2560w" sizes="100vw" alt="Татуировка волка на руке — работа студии AKIOTOO" width="1600" height="984" fetchpriority="high">
-            </picture>
-          </div>
-        </div>
-        <!-- НОВЫЕ СЛОИ ДОБАВЛЯТЬ СЮДА -->
-        <div class="hero__shade" aria-hidden="true"></div>
+      <div class="hero__media" data-speed="0.3">
+        <picture>
+          <source type="image/avif" media="(max-width: 1023px)" srcset="assets/img/hero-m-800.avif 800w, assets/img/hero-m-1200.avif 1200w" sizes="100vw">
+          <source type="image/webp" media="(max-width: 1023px)" srcset="assets/img/hero-m-800.webp 800w, assets/img/hero-m-1200.webp 1200w" sizes="100vw">
+          <source type="image/avif" srcset="assets/img/hero-1600.avif 1600w, assets/img/hero-2000.avif 2000w" sizes="100vw">
+          <img src="assets/img/hero-1600.webp" srcset="assets/img/hero-1600.webp 1600w, assets/img/hero-2000.webp 2000w" sizes="100vw" width="1600" height="920" alt="Татуировка волка на руке — работа студии AKIOTOO" fetchpriority="high" decoding="async">
+        </picture>
       </div>
+      <div class="hero__shade" aria-hidden="true"></div>
 
-      <div class="hero__brand">
+      <div class="hero__inner container">
         <h1 class="hero__title">
-          <span class="hero__logo-box">
-            <span class="hero__logo" data-flying-logo>
-              <span class="hero__logo-inner" data-depth="0.9">
-                <img src="assets/img/logo.webp" alt="AKIOTOO" width="1400" height="360">
-              </span>
-            </span>
-          </span>
-          <span class="hero__sub">
-            <span class="hero__studio">Тату студия</span>
-            <span class="hero__city hand">в Костанае</span>
+          <picture class="hero__logo">
+            <source type="image/avif" srcset="assets/img/logo-700.avif 700w, assets/img/logo-1400.avif 1400w" sizes="(min-width: 1024px) 46vw, 88vw">
+            <img src="assets/img/logo-700.webp" srcset="assets/img/logo-700.webp 700w, assets/img/logo-1400.webp 1400w" sizes="(min-width: 1024px) 46vw, 88vw" width="700" height="180" alt="AKIOTOO">
+          </picture>
+          <span class="hero__studio">Тату студия</span>
+          <span class="hero__city">
+            <span class="sr-only">в Костанае</span>
+            <svg aria-hidden="true" focusable="false"><use href="#t-city"/></svg>
           </span>
         </h1>
-      </div>
 
-      <div class="hero__cta-wrap">
-        <a class="btn-hand hero__cta" data-wa href="#">
-          <svg class="btn-hand__box" aria-hidden="true"><use href="#i-box"/></svg>
-          <span>Запись</span>
-          <svg class="btn-hand__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-      </div>
-
-      <div class="hero__meta" aria-hidden="true">
-        <span>53.21° N · 63.62° E</span>
-        <span class="hero__scroll">листайте<i></i></span>
+        <div class="hero__bottom">
+          <a class="btn-marker" data-wa href="#">
+            <span class="sr-only">Запись</span>
+            <svg class="btn-marker__word" aria-hidden="true" focusable="false"><use href="#t-zapis"/></svg>
+            <svg class="btn-marker__arrow" aria-hidden="true" focusable="false"><use href="#i-arrow-hand"/></svg>
+            <svg class="btn-marker__box" aria-hidden="true" focusable="false"><use href="#i-box"/></svg>
+          </a>
+          <p class="hero__meta"><span data-address></span></p>
+        </div>
       </div>
     </section>
 
     <!-- ============ ЦИФРЫ ============ -->
     <section class="stats" aria-label="Студия в цифрах">
-      <div class="tear" data-tear aria-hidden="true"></div>
-      <ul class="stats__list" data-ink>
-        <li class="stat">
-          <span class="stat__label">опыта</span>
-          <span class="stat__value"><span class="stat__num" data-count="5">5</span><span class="stat__suffix">+ лет</span></span>
-        </li>
-        <li class="stat">
-          <span class="stat__label">работ сделано</span>
-          <span class="stat__value"><span class="stat__num" data-count="3500">3500</span><span class="stat__suffix">+</span></span>
-        </li>
-        <li class="stat">
-          <span class="stat__label">консультация</span>
-          <span class="stat__value"><span class="stat__num" data-count="0">0</span><span class="stat__suffix stat__suffix--sans">₸</span></span>
-        </li>
-      </ul>
+      <div class="container">
+        <ul class="stats__list" data-reveal>
+          <li class="stat"><span class="stat__value">5+ <small>лет</small></span><span class="stat__label">опыта</span></li>
+          <li class="stat"><span class="stat__value">3500+</span><span class="stat__label">работ сделано</span></li>
+          <li class="stat"><span class="stat__value">0 ₸</span><span class="stat__label">консультация</span></li>
+        </ul>
+      </div>
     </section>
 
     <!-- ============ ПОРТФОЛИО ============ -->
-    <section class="portfolio" id="works">
-      <div class="tear" data-tear aria-hidden="true"></div>
-      <div class="portfolio__head">
-        <h2 class="title" data-ink>Портфолио</h2>
-        <div class="portfolio__aside">
-          <p class="portfolio__note">Каждая работа — по индивидуальному эскизу</p>
-          <a class="link-arrow" href="works.html">Все работы <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-        <div class="portfolio__progress" aria-hidden="true"><i data-progress></i></div>
-      </div>
-      <div class="portfolio__viewport">
-        <div class="portfolio__track" data-works-home>
+    <section class="section" id="works" aria-labelledby="works-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="kicker">01 — Работы</p>
+          <h2 class="h2" id="works-title">Портфолио</h2>
+          <a class="link" href="works.html">Все работы <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </header>
+        <div class="works-grid works-grid--home" data-works-home data-reveal>
           <!-- карточки подставляются из js/config.js -->
         </div>
       </div>
     </section>
 
     <!-- ============ ПРЕИМУЩЕСТВА ============ -->
-    <section class="features" aria-label="Почему AKIOTOO">
-      <div class="tear" data-tear aria-hidden="true"></div>
-      <ul class="features__list">
-        <li class="feature" data-ink>
-          <span class="feature__num">01</span>
-          <svg class="feature__icon" aria-hidden="true"><use href="#i-gem"/></svg>
-          <span class="feature__text">Индивидуальный эскиз</span>
-        </li>
-        <li class="feature" data-ink>
-          <span class="feature__num">02</span>
-          <svg class="feature__icon" aria-hidden="true"><use href="#i-layers"/></svg>
-          <span class="feature__text">Любой стиль</span>
-        </li>
-        <li class="feature" data-ink>
-          <span class="feature__num">03</span>
-          <svg class="feature__icon" aria-hidden="true"><use href="#i-shield"/></svg>
-          <span class="feature__text">Стерильность и&nbsp;безопасность</span>
-        </li>
-        <li class="feature" data-ink>
-          <span class="feature__num">04</span>
-          <svg class="feature__icon" aria-hidden="true"><use href="#i-cal"/></svg>
-          <span class="feature__text">Удобная запись</span>
-        </li>
-      </ul>
+    <section class="section" aria-labelledby="features-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="kicker">02 — Подход</p>
+          <h2 class="h2" id="features-title">Почему AKIOTOO</h2>
+        </header>
+        <ul class="features" data-reveal>
+          <li class="feature">
+            <svg class="feature__icon" aria-hidden="true"><use href="#i-gem"/></svg>
+            <h3 class="feature__title">Индивидуальный эскиз</h3>
+          </li>
+          <li class="feature">
+            <svg class="feature__icon" aria-hidden="true"><use href="#i-layers"/></svg>
+            <h3 class="feature__title">Любой стиль</h3>
+          </li>
+          <li class="feature">
+            <svg class="feature__icon" aria-hidden="true"><use href="#i-shield"/></svg>
+            <h3 class="feature__title">Стерильность и&nbsp;безопасность</h3>
+          </li>
+          <li class="feature">
+            <svg class="feature__icon" aria-hidden="true"><use href="#i-cal"/></svg>
+            <h3 class="feature__title">Удобная запись</h3>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <!-- ============ О МАСТЕРЕ ============ -->
-    <section class="about" id="master">
-      <div class="tear" data-tear aria-hidden="true"></div>
-      <div class="about__word" aria-hidden="true"><span>мастер · мастер · мастер ·</span></div>
-      <div class="about__text">
-        <h2 class="title" data-ink>О мастере</h2>
-        <p data-ink>Татуировщик в&nbsp;Костанае с&nbsp;опытом более 5&nbsp;лет. Создаю индивидуальные эскизы во&nbsp;всех стилях</p>
-        <a class="btn-hand about__cta" data-wa href="#">
-          <svg class="btn-hand__box" aria-hidden="true"><use href="#i-box"/></svg>
-          <span>Обсудить эскиз</span>
-          <svg class="btn-hand__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-      </div>
-      <figure class="about__photo" data-ink>
-        <div class="about__photo-inner">
-          <img src="assets/img/master.webp" alt="Мастер AKIOTOO за работой" width="900" height="942" loading="lazy" decoding="async">
+    <section class="section" id="master" aria-labelledby="master-title">
+      <div class="container grid about">
+        <div class="about__text" data-reveal>
+          <p class="kicker">03 — Мастер</p>
+          <h2 class="h2" id="master-title">О мастере</h2>
+          <p class="lead">Татуировщик в&nbsp;Костанае с&nbsp;опытом более 5&nbsp;лет. Создаю индивидуальные эскизы во&nbsp;всех стилях</p>
+          <a class="btn about__cta" data-wa href="#"><svg aria-hidden="true"><use href="#i-wa"/></svg>Записаться</a>
         </div>
-      </figure>
+        <figure class="about__photo" data-reveal>
+          <picture>
+            <source type="image/avif" srcset="assets/img/master-600.avif 600w, assets/img/master-900.avif 900w" sizes="(min-width: 1024px) 34vw, 42vw">
+            <img src="assets/img/master-600.webp" srcset="assets/img/master-600.webp 600w, assets/img/master-900.webp 900w" sizes="(min-width: 1024px) 34vw, 42vw" width="600" height="628" alt="Мастер AKIOTOO за работой" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+      </div>
     </section>
 
     <!-- ============ АДРЕС ============ -->
-    <section class="contacts" id="contacts">
-      <div class="tear" data-tear aria-hidden="true"></div>
-      <div class="contacts__info">
-        <h2 class="hand contacts__title" data-ink>Адрес</h2>
-        <p class="contacts__address" data-address></p>
-        <p class="contacts__note" data-address-note></p>
-        <div class="contacts__links">
-          <a class="link-arrow" data-2gis href="#">Открыть в 2GIS <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="link-arrow" data-wa href="#">Записаться в WhatsApp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <section class="section" id="contacts" aria-labelledby="contacts-title">
+      <div class="container grid contacts">
+        <div class="contacts__info" data-reveal>
+          <p class="kicker">04 — Контакты</p>
+          <h2 class="h2" id="contacts-title">Адрес</h2>
+          <p class="contacts__address" data-address></p>
+          <p class="contacts__note" data-address-note></p>
+          <div class="contacts__actions">
+            <a class="btn" data-wa href="#"><svg aria-hidden="true"><use href="#i-wa"/></svg>Записаться</a>
+            <a class="btn btn--ghost" data-2gis href="#">Открыть в 2GIS</a>
+          </div>
         </div>
+        <div class="map" data-map data-reveal role="region" aria-label="Карта"></div>
       </div>
-      <div class="map" data-map data-ink></div>
     </section>
   </main>
 
-  <!-- ============ ПОДВАЛ ============ -->
   <footer class="footer">
-    <div class="tear" data-tear aria-hidden="true"></div>
-    <a class="footer__cta hand" data-wa href="#">Запись <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    <ul class="socials footer__socials" aria-label="Соцсети">
-      <li><a data-ig href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a></li>
-      <li><a data-tg href="#" aria-label="Telegram"><svg><use href="#i-tg"/></svg></a></li>
-      <li><a data-wa href="#" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a></li>
-    </ul>
-    <p class="footer__copy">© <span data-year>2026</span> AKIOTOO · тату студия в Костанае</p>
+    <div class="container footer__inner">
+      <a class="footer__logo" href="#top" aria-label="AKIOTOO — наверх"><picture><source type="image/avif" srcset="assets/img/logo-300.avif"><img src="assets/img/logo-300.webp" width="300" height="77" alt="AKIOTOO"></picture></a>
+      <p class="footer__tag">Тату студия в Костанае<br><span data-address></span></p>
+      <ul class="socials footer__socials" aria-label="Соцсети">
+        <li><a class="icon-btn" data-ig href="#" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a></li>
+        <li><a class="icon-btn" data-wa href="#" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a></li>
+        <li><a class="icon-btn" data-tg href="#" aria-label="Telegram"><svg aria-hidden="true"><use href="#i-tg"/></svg></a></li>
+      </ul>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span data-year>2026</span> AKIOTOO</p>
+      <a class="link link--sm" href="#top">Наверх</a>
+    </div>
   </footer>
 
-  <div class="grain" aria-hidden="true"></div>
-
-  <script src="js/config.js"></script>
-  <script src="js/main.js" defer></script>
 </body>
 </html>
